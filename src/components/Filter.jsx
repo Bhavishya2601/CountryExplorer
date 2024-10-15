@@ -1,0 +1,45 @@
+import React, { useEffect, useState } from 'react'
+
+const Filter = ({searchUpdate, selectUpdate}) => {
+    const [input, setInput] = useState('')
+    const [select, setSelect] = useState('')
+
+    useEffect(() => {
+      searchUpdate(input)
+    }, [input, searchUpdate])
+
+    useEffect(() => {
+        selectUpdate(select)
+    }, [select, selectUpdate])
+    
+    
+    const handleSearch = (e) =>{
+        setInput(e.target.value)
+    }
+
+    const handleSelect = (e) =>{
+        setSelect(e.target.value)
+    }
+
+  return (
+    <div className='my-10 mx-24 flex justify-between'>
+      <div className='flex gap-1 items-center shadow-xl px-3 py-1'>
+        <img src="search.svg" alt="" className='h-5' />
+        <input type="text" placeholder='Search for a Country' id="search" name="search" className='px-4 py-2 outline-none' value={input} onChange={handleSearch} />
+      </div>
+      <div>
+        <select name="filter" id="filter" className='px-4 py-2 shadow-xl outline-none w-48' onChange={handleSelect}>
+            <option>Filter By Region</option>
+            <option value="africa">Africa</option>
+            <option value="americas">Americas</option>
+            <option value="antarctic">Antarctic</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+        </select>
+      </div>
+    </div>
+  )
+}
+
+export default Filter
