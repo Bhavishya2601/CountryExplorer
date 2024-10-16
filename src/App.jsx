@@ -10,6 +10,7 @@ function App() {
   const [error, setError] = useState('')
   const [filter, setFilter] = useState("")
   const [select, setSelect] = useState("")
+  const [theme, setTheme] = useState('light')
 
   const handleSearchUpdate = (search) =>{
     setFilter(search)
@@ -18,6 +19,11 @@ function App() {
   const selectUpdate = (select) =>{
     setSelect(select)
   }
+
+  const changeTheme = () =>{
+    setTheme((prevTheme)=> (prevTheme==='light' ? 'dark' : 'light'))
+    console.log(theme)
+}
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,9 +51,11 @@ function App() {
 
   return (
     <>
-    <Navbar />
-    <Filter searchUpdate={handleSearchUpdate} selectUpdate={selectUpdate}/>
-    <Countries data={data} error={error}/>
+    <Navbar changeTheme={changeTheme} theme={theme}/>
+    <div className={`${theme==='light'? 'bg-white' : 'bg-black'} transition-colors duration-300`}>
+    <Filter searchUpdate={handleSearchUpdate} selectUpdate={selectUpdate} theme={theme}/>
+    <Countries data={data} error={error} theme={theme}/>
+    </div>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Filter = ({searchUpdate, selectUpdate}) => {
+const Filter = ({searchUpdate, selectUpdate, theme}) => {
     const [input, setInput] = useState('')
     const [select, setSelect] = useState('')
 
@@ -22,13 +22,13 @@ const Filter = ({searchUpdate, selectUpdate}) => {
     }
 
   return (
-    <div className='my-10 mx-24 flex justify-between'>
-      <div className='flex gap-1 items-center shadow-xl px-3 py-1'>
-        <img src="search.svg" alt="" className='h-5' />
-        <input type="text" placeholder='Search for a Country' id="search" name="search" className='px-4 py-2 outline-none' value={input} onChange={handleSearch} />
+    <div className='py-10 px-24 flex justify-between'>
+      <div className={`flex gap-1 items-center shadow-xl px-3 py-1 ${theme==='light' ? '' : 'bg-gray-800'} transition-colors duration-300`}>
+        <img src={`${theme==='light' ? 'search-black.svg' : 'search-white.svg'}`} alt="" className='h-5 transition-colors duration-300' />
+        <input type="text" placeholder='Search for a Country' id="search" name="search" className={`px-4 py-2 outline-none ${theme==='light' ? '' : 'bg-gray-800 text-white'} transition-colors duration-300`} value={input} onChange={handleSearch} />
       </div>
       <div>
-        <select name="filter" id="filter" className='px-4 py-2 shadow-xl outline-none w-48' onChange={handleSelect}>
+        <select name="filter" id="filter" className={`px-4 py-2 shadow-xl outline-none w-48 ${theme==='light' ? '' : 'bg-gray-800 text-white'} transition-colors duration-300`} onChange={handleSelect}>
             <option>Filter By Region</option>
             <option value="africa">Africa</option>
             <option value="americas">Americas</option>

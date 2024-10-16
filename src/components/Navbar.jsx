@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const Navbar = () => {
-    const [theme, setTheme] = useState('light')
-
-    const changeTheme = () =>{
-        setTheme((prevTheme)=> (prevTheme==='light' ? 'dark' : 'light'))
-    }
-
-    useEffect(() => {
-        document.body.className = theme ===  'light' ? 'bg-white text-black' : 'bg-black text-white';
-    }, [theme])
-    
+const Navbar = ({changeTheme, theme}) => {
 
   return (
-    <div className={`flex justify-between px-32 h-[80px] items-center shadow-xl transition-colors duration-300 ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}>
-      <div>logo</div>
-      <div onClick={changeTheme} className='cursor-pointer'>{theme === 'light' ? 'Light Mode' : 'Dark Mode'}</div>
+    <div className={`flex justify-between px-32 h-[80px] items-center transition-colors duration-300 ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'} border-b-2`}>
+      <div className='text-[25px] font-medium'>CountryExplorer</div>
+      <div onClick={changeTheme} className='cursor-pointer'><img src={theme === 'light' ? 'moon.svg' : 'sun.svg'} alt="theme" className='h-5 w-5' /></div>
     </div>
   )
 }
