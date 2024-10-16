@@ -1,6 +1,6 @@
-## Country Explorer
+## CountryExplorer
 
-Country Explorer is a React application that allows users to search for countries and filter them by region. The application features a dark mode/light mode toggle, making it user-friendly and visually appealing.
+CountryExplorer is a React application that allows users to search for countries and filter them by region. The application features a dark mode/light mode toggle, making it user-friendly and visually appealing.
 
 ## Features
 
